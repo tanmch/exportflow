@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  /* Palet monokrom — putih di atas hitam, dengan tangga abu netral untuk hierarki */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #52525b;
+  --color-ink-faint: #a1a1aa;
+  --color-border: #e4e4e7;
+  --color-border-strong: #d4d4d8;
+  --color-accent: #0a0a0a;
+  --color-accent-foreground: #ffffff;
+  --color-focus-ring: #0a0a0a;
+  --color-danger: #b91c1c;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --color-canvas: #0a0a0a;
+  --color-surface: #111113;
+  --color-surface-raised: #18181b;
+  --color-ink: #fafafa;
+  --color-ink-muted: #a1a1aa;
+  --color-ink-faint: #71717a;
+  --color-border: #27272a;
+  --color-border-strong: #3f3f46;
+  --color-accent: #fafafa;
+  --color-accent-foreground: #0a0a0a;
+  --color-focus-ring: #fafafa;
+  --color-danger: #f87171;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas: #0a0a0a;
+    --color-surface: #111113;
+    --color-surface-raised: #18181b;
+    --color-ink: #fafafa;
+    --color-ink-muted: #a1a1aa;
+    --color-ink-faint: #71717a;
+    --color-border: #27272a;
+    --color-border-strong: #3f3f46;
+    --color-accent: #fafafa;
+    --color-accent-foreground: #0a0a0a;
+    --color-focus-ring: #fafafa;
+    --color-danger: #f87171;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-danger: var(--color-danger);
+  --font-sans: var(--font-sans);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fokus terlihat jelas — wajib karena palet monokrom rawan focus state hilang */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scrollbar tipis, netral — konsisten di kedua tema */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}

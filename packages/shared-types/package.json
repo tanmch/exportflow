@@ -1,0 +1,8 @@
+{
+  "name": "@exportflow/shared-types",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skema data bersama untuk seluruh service ExportFlow (lihat docs/ARCHITECTURE.md).",
+  "main": "src/index.ts",
+  "types": "src/index.ts"
+}
